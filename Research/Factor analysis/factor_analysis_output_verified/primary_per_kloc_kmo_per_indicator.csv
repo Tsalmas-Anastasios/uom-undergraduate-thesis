@@ -1,0 +1,8 @@
+,KMO
+reliability_issues_per_kloc,0.5193151256249778
+maintainability_issues_per_kloc,0.7294855575409077
+security_issues_per_kloc,0.5993860141228552
+security_hotspots_per_kloc,0.4951229610411081
+complexity_per_kloc,0.6063503225736184
+cognitive_complexity_per_kloc,0.5843623965269581
+duplicated_lines_density,0.8766713875776574

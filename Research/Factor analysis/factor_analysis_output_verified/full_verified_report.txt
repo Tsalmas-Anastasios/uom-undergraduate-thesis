@@ -1,0 +1,127 @@
+Software / reproducibility information:
+  python: 3.12.13
+  pandas: 2.2.2
+  numpy: 2.0.2
+  scipy: 1.16.3
+  scikit_learn: 1.6.1
+  statsmodels: 0.14.6
+  matplotlib: 3.10.0
+  random_state: 42
+  parallel_analysis_iterations: 1000
+====================================================================================================
+1. LOAD AND CLEAN DATA
+====================================================================================================
+Original rows: 20,880
+Original projects: 353
+Original unique PRs: 10,111
+Valid base/closed PR pairs: 9,813
+Closed snapshots before ncloc filter: 9,813
+After ncloc > 0: 3,702
+Dropped unsupported/missing categories: 1
+Final sample: 3,701 PRs in 242 projects
+PRs/project: median=8, min=1, max=85
+Category distribution:
+category_bucket
+quality     2885
+both         536
+security     280
+
+====================================================================================================
+2. PRIMARY EFA INDICATORS: PER-KLOC / DENSITY METRICS
+====================================================================================================
+Caution: several indicators share KLOC as denominator. A separate size-adjusted EFA sensitivity analysis is therefore included.
+
+====================================================================================================
+EFA: primary_per_kloc
+====================================================================================================
+[primary_per_kloc] KMO overall: 0.631
+[primary_per_kloc] Bartlett: chi2=13877.232, df=21, p=0
+[primary_per_kloc] Parallel Analysis retained: 3 factor(s)
+[primary_per_kloc] Variables with communality < 0.30:
+security_issues_per_kloc    0.206
+[primary_per_kloc] Potential cross-loading indicators (>=2 loadings |loading| >= 0.32):
+maintainability_issues_per_kloc    3
+duplicated_lines_density           2
+[primary_per_kloc] factor_3: FRAGILE: fewer than 3 indicators have |loading| >= 0.40
+[primary_per_kloc] Rotated loadings:
+                                 factor_1  factor_2  factor_3
+reliability_issues_per_kloc         0.035     0.807     0.028
+maintainability_issues_per_kloc     0.484     0.589     0.373
+security_issues_per_kloc           -0.081     0.092     0.436
+security_hotspots_per_kloc         -0.007     0.077     0.759
+complexity_per_kloc                 0.959     0.139    -0.008
+cognitive_complexity_per_kloc       0.985     0.033     0.005
+duplicated_lines_density            0.394     0.418    -0.110
+[primary_per_kloc] Communalities:
+reliability_issues_per_kloc        0.653
+maintainability_issues_per_kloc    0.720
+security_issues_per_kloc           0.206
+security_hotspots_per_kloc         0.582
+complexity_per_kloc                0.940
+cognitive_complexity_per_kloc      0.972
+duplicated_lines_density           0.342
+
+====================================================================================================
+EFA: sensitivity_size_adjusted
+====================================================================================================
+[sensitivity_size_adjusted] KMO overall: 0.684
+[sensitivity_size_adjusted] Bartlett: chi2=15242.444, df=21, p=0
+[sensitivity_size_adjusted] Parallel Analysis retained: 2 factor(s)
+[sensitivity_size_adjusted] Variables with communality < 0.30:
+softwareQualitySecurityIssues_size_adjusted    0.088
+duplicatedLinesDensity_size_adjusted           0.273
+[sensitivity_size_adjusted] Potential cross-loading indicators (>=2 loadings |loading| >= 0.32):
+softwareQualityMaintainabilityIssues_size_adjusted    2
+[sensitivity_size_adjusted] Rotated loadings:
+                                                    factor_1  factor_2
+softwareQualityReliabilityIssues_size_adjusted        -0.027     0.799
+softwareQualityMaintainabilityIssues_size_adjusted     0.479     0.763
+softwareQualitySecurityIssues_size_adjusted            0.206     0.215
+securityHotspots_size_adjusted                         0.250     0.506
+complexity_size_adjusted                               0.930     0.221
+cognitiveComplexity_size_adjusted                      0.991     0.052
+duplicatedLinesDensity_size_adjusted                   0.435     0.290
+[sensitivity_size_adjusted] Communalities:
+softwareQualityReliabilityIssues_size_adjusted        0.639
+softwareQualityMaintainabilityIssues_size_adjusted    0.811
+softwareQualitySecurityIssues_size_adjusted           0.088
+securityHotspots_size_adjusted                        0.319
+complexity_size_adjusted                              0.914
+cognitiveComplexity_size_adjusted                     0.985
+duplicatedLinesDensity_size_adjusted                  0.273
+
+EFA robustness comparison:
+                 analysis  n_factors      KMO  Bartlett_p
+         primary_per_kloc          3 0.631281         0.0
+sensitivity_size_adjusted          2 0.683924         0.0
+WARNING: the number of retained factors changes after size adjustment. Treat the primary factor structure as exploratory rather than definitive.
+
+====================================================================================================
+3. SAME FACTOR SCORE: OLS BASELINE VS PROJECT-RANDOM-INTERCEPT LMM
+====================================================================================================
+
+[factor_1] factor_1 ~ C(category_bucket, Treatment('quality')) + log_ncloc
+[factor_1] OLS: LL=-5151.081, AIC=10310.162, BIC=10335.028
+[factor_1] LMM-ML: LL=-384.002, AIC=780.004, BIC=817.302, optimizer=lbfgs
+[factor_1] LMM-REML: project variance=0.9371, residual variance=0.0526, ICC=94.7%, optimizer=lbfgs
+
+[factor_2] factor_2 ~ C(category_bucket, Treatment('quality')) + log_ncloc
+[factor_2] OLS: LL=-4877.696, AIC=9763.391, BIC=9788.257
+[factor_2] LMM-ML: LL=-1843.665, AIC=3699.330, BIC=3736.628, optimizer=lbfgs
+[factor_2] LMM-REML: project variance=0.8292, residual variance=0.1232, ICC=87.1%, optimizer=lbfgs
+
+[factor_3] factor_3 ~ C(category_bucket, Treatment('quality')) + log_ncloc
+[factor_3] OLS: LL=-5183.796, AIC=10375.593, BIC=10400.458
+[factor_3] LMM-ML: LL=-2584.325, AIC=5180.650, BIC=5217.948, optimizer=lbfgs
+[factor_3] LMM-REML: project variance=0.6957, residual variance=0.1908, ICC=78.5%, optimizer=lbfgs
+
+Model comparison:
+  factor  n_obs  n_projects  ols_loglikelihood    ols_aic    ols_bic  lmm_ml_loglikelihood  lmm_ml_aic  lmm_ml_bic  delta_aic_ols_minus_lmm  delta_bic_ols_minus_lmm  reml_project_variance  reml_residual_variance  reml_icc ml_optimizer reml_optimizer  ml_converged  reml_converged
+factor_1   3701         242         -5151.0811 10310.1621 10335.0275             -384.0019    780.0039    817.3020                9530.1582                9517.7255                 0.9371                  0.0526    0.9468        lbfgs          lbfgs          True            True
+factor_2   3701         242         -4877.6957  9763.3914  9788.2568            -1843.6651   3699.3303   3736.6284                6064.0611                6051.6284                 0.8292                  0.1232    0.8707        lbfgs          lbfgs          True            True
+factor_3   3701         242         -5183.7963 10375.5926 10400.4580            -2584.3251   5180.6502   5217.9484                5194.9424                5182.5097                 0.6957                  0.1908    0.7847        lbfgs          lbfgs          True            True
+
+====================================================================================================
+4. SENSITIVITY: PROJECTS WITH >= 5 PRs
+====================================================================================================
+Sensitivity sample: 3,544 PRs in 149 projects

@@ -1,0 +1,3 @@
+analysis,factor,n_salient_loadings_ge_0_40,n_strong_loadings_ge_0_50,largest_abs_loading,stable_by_3_indicator_rule,warning
+sensitivity_size_adjusted,factor_1,4,2,0.991261970553841,True,
+sensitivity_size_adjusted,factor_2,3,3,0.798740772067702,True,

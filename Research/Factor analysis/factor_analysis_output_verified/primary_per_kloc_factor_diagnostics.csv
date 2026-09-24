@@ -1,0 +1,4 @@
+analysis,factor,n_salient_loadings_ge_0_40,n_strong_loadings_ge_0_50,largest_abs_loading,stable_by_3_indicator_rule,warning
+primary_per_kloc,factor_1,3,2,0.985204222290264,True,
+primary_per_kloc,factor_2,3,2,0.8068911552929693,True,
+primary_per_kloc,factor_3,2,1,0.7589011032812054,False,FRAGILE: fewer than 3 indicators have |loading| >= 0.40
