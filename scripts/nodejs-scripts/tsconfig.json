@@ -1,0 +1,63 @@
+{
+    "compilerOptions": {
+        "noEmit": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "allowImportingTsExtensions": true,
+        "exactOptionalPropertyTypes": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitOverride": true,
+        "strict": false,
+        "skipLibCheck": true,
+        "baseUrl": "./",
+        "paths": {
+            "@": ["src/*"],
+            "@components/*": ["src/components/*"],
+            "@pages/*": ["src/pages/*"],
+            "@utils/*": ["src/utils/*"],
+            "@hooks/*": ["src/hooks/*"],
+            "@assets/*": ["src/assets/*"]
+        },
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "target": "ESNext",
+        "jsx": "react-jsx",
+        "types": [],
+        "allowJs": true,
+        "checkJs": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitAny": false
+    },
+    "include": [
+        "src/app.ts",
+        "src/bootstrap.ts",
+        "src/config/**/*.ts",
+        "src/controllers/**/*.ts",
+        "src/db/**/*.ts",
+        "src/interfaces/**/*.ts",
+        "src/jobs/**/*.ts",
+        "src/models/*.ts",
+        "src/models/github/**/*.ts",
+        "src/routes/**/*.ts",
+        "src/services/github-api/**/*.ts",
+        "src/services/github-reports/**/*.ts",
+        "src/services/git/**/*.ts",
+        "src/services/sonarqube/**/*.ts",
+        "src/types/**/*.ts",
+        "src/utils/**/*.ts",
+        "server"
+    ],
+    "exclude": [
+        "node_modules",
+        "src/enums/openwebui",
+        "src/models/openwebui",
+        "src/services/openwebui",
+        "src/types/openwebui",
+        "cloned-repositories"
+    ]
+}

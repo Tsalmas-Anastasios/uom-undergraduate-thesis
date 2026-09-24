@@ -1,0 +1,43 @@
+import type { GitHub } from '../index.model.ts';
+
+export interface GithubSearchResultItem {
+    url: string;
+    repository_url: string;
+    labels_url: string;
+    comments_url: string;
+    events_url: string;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    locked: boolean;
+    active_lock_reason?: string | null;
+    assignees?: GitHub.Model.SimpleUser[] | null;
+    user: GitHub.Model.SimpleUser | null;
+    labels: GitHub.Model.Label[];
+    sub_issues_summary?: GitHub.Model.SubIssuesSummary;
+    issue_dependencies_summary?: GitHub.Model.IssueDependenciesSummary;
+    issue_field_values?: GitHub.Model.IssueFieldValue[];
+    state: string;
+    state_reason?: string | null;
+    assignee: GitHub.Model.SimpleUser | null;
+    milestone: GitHub.Model.Milestone | null;
+    comments: number;
+    created_at: string | Date;
+    updated_at: string | Date;
+    closed_at: string | Date | null;
+    text_matches?: GitHub.Model.SearchResultTextMatch[];
+    pull_request?: GitHub.Model.PullRequestLinks;
+    body?: string;
+    score: number;
+    author_association: GitHub.Type.AuthorAssociation;
+    draft?: boolean;
+    repository?: GitHub.Model.Repository;
+    body_html?: string;
+    body_text?: string;
+    timeline_url?: string;
+    type?: GitHub.Model.IssueType | null;
+    performed_via_github_app?: GitHub.Model.GitHubApp | null;
+    reactions?: GitHub.Model.ReactionRollup;
+}

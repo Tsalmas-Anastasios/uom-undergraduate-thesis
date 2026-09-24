@@ -1,0 +1,17 @@
+export interface CodeInterpreterConfigForm {
+    ENABLE_CODE_EXECUTION: boolean;
+    CODE_EXECUTION_ENGINE: string;
+    CODE_EXECUTION_JUPYTER_URL: string | null;
+    CODE_EXECUTION_JUPYTER_AUTH: string | null;
+    CODE_EXECUTION_JUPYTER_AUTH_TOKEN: string | null;
+    CODE_EXECUTION_JUPYTER_AUTH_PASSWORD: string | null;
+    CODE_EXECUTION_JUPYTER_TIMEOUT: number | null;
+    ENABLE_CODE_INTERPRETER: boolean;
+    CODE_INTERPRETER_ENGINE: string;
+    CODE_INTERPRETER_PROMPT_TEMPLATE: string | null;
+    CODE_INTERPRETER_JUPYTER_URL: string | null;
+    CODE_INTERPRETER_JUPYTER_AUTH: string | null;
+    CODE_INTERPRETER_JUPYTER_AUTH_TOKEN: string | null;
+    CODE_INTERPRETER_JUPYTER_AUTH_PASSWORD: string | null;
+    CODE_INTERPRETER_JUPYTER_TIMEOUT: number | null;
+}

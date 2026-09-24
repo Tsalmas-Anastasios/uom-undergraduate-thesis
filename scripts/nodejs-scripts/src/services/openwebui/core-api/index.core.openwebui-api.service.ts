@@ -1,0 +1,83 @@
+import { AudioCoreOpenWebUIApiService } from './audio.core.openwebui-api.service.ts';
+import { AuthsCoreOpenWebUIApiService } from './auths.core.openwebui-api.service.ts';
+import { ChannelsCoreOpenWebUIApiService } from './channels.core.openwebui-api.service.ts';
+import { ChatsCoreOpenWebUIApiService } from './chats.core.openwebui-api.service.ts';
+import { ConfigsCoreOpenWebUIApiService } from './configs.core.openwebui-api.service.ts';
+import { CoreCoreOpenWebUIApiService } from './core.core.openwebui-api.service.ts';
+import { EvaluationsCoreOpenWebUIApiService } from './evaluations.core.openwebui-api.service.ts';
+import { FilesCoreOpenWebUIApiService } from './files.core.openwebui-api.service.ts';
+import { FoldersCoreOpenWebUIApiService } from './folders.core.openwebui-api.service.ts';
+import { FunctionsCoreOpenWebUIApiService } from './functions.core.openwebui-api.service.ts';
+import { GroupsCoreOpenWebUIApiService } from './groups.core.openwebui-api.service.ts';
+import { ImagesCoreOpenWebUIApiService } from './images.core.openwebui-api.service.ts';
+import { KnowledgeCoreOpenWebUIApiService } from './knowledge.core.openwebui-api.service.ts';
+import { MemoriesCoreOpenWebUIApiService } from './memories.core.openwebui-api.service.ts';
+import { ModelsCoreOpenWebUIApiService } from './models.core.openwebui-api.service.ts';
+import { NotesCoreOpenWebUIApiService } from './notes.core.openwebui-api.service.ts';
+import { OllamaCoreOpenWebUIApiService } from './ollama.core.openwebui-api.service.ts';
+import { OpenaiCoreOpenWebUIApiService } from './openai.core.openwebui-api.service.ts';
+import { PipelinesCoreOpenWebUIApiService } from './pipelines.core.openwebui-api.service.ts';
+import { PromptsCoreOpenWebUIApiService } from './prompts.core.openwebui-api.service.ts';
+import { RetrievalCoreOpenWebUIApiService } from './retrieval.core.openwebui-api.service.ts';
+import { TasksCoreOpenWebUIApiService } from './tasks.core.openwebui-api.service.ts';
+import { ToolsCoreOpenWebUIApiService } from './tools.core.openwebui-api.service.ts';
+import { UsersCoreOpenWebUIApiService } from './users.core.openwebui-api.service.ts';
+import { UtilsCoreOpenWebUIApiService as UtilitiesCoreOpenWebUIApiService } from './utils.core.openwebui-api.service.ts';
+
+export class CoreOpenWebUIApiService {
+    public readonly audio: AudioCoreOpenWebUIApiService;
+    public readonly auths: AuthsCoreOpenWebUIApiService;
+    public readonly channels: ChannelsCoreOpenWebUIApiService;
+    public readonly chats: ChatsCoreOpenWebUIApiService;
+    public readonly configs: ConfigsCoreOpenWebUIApiService;
+    public readonly core: CoreCoreOpenWebUIApiService;
+    public readonly evaluations: EvaluationsCoreOpenWebUIApiService;
+    public readonly files: FilesCoreOpenWebUIApiService;
+    public readonly folders: FoldersCoreOpenWebUIApiService;
+    public readonly functions: FunctionsCoreOpenWebUIApiService;
+    public readonly groups: GroupsCoreOpenWebUIApiService;
+    public readonly images: ImagesCoreOpenWebUIApiService;
+    public readonly knowledge: KnowledgeCoreOpenWebUIApiService;
+    public readonly memories: MemoriesCoreOpenWebUIApiService;
+    public readonly models: ModelsCoreOpenWebUIApiService;
+    public readonly notes: NotesCoreOpenWebUIApiService;
+    public readonly ollama: OllamaCoreOpenWebUIApiService;
+    public readonly openai: OpenaiCoreOpenWebUIApiService;
+    public readonly pipelines: PipelinesCoreOpenWebUIApiService;
+    public readonly prompts: PromptsCoreOpenWebUIApiService;
+    public readonly retrieval: RetrievalCoreOpenWebUIApiService;
+    public readonly tasks: TasksCoreOpenWebUIApiService;
+    public readonly tools: ToolsCoreOpenWebUIApiService;
+    public readonly users: UsersCoreOpenWebUIApiService;
+    public readonly utils: UtilitiesCoreOpenWebUIApiService;
+
+    constructor() {
+        this.audio = new AudioCoreOpenWebUIApiService();
+        this.auths = new AuthsCoreOpenWebUIApiService();
+        this.channels = new ChannelsCoreOpenWebUIApiService();
+        this.chats = new ChatsCoreOpenWebUIApiService();
+        this.configs = new ConfigsCoreOpenWebUIApiService();
+        this.core = new CoreCoreOpenWebUIApiService();
+        this.evaluations = new EvaluationsCoreOpenWebUIApiService();
+        this.files = new FilesCoreOpenWebUIApiService();
+        this.folders = new FoldersCoreOpenWebUIApiService();
+        this.functions = new FunctionsCoreOpenWebUIApiService();
+        this.groups = new GroupsCoreOpenWebUIApiService();
+        this.images = new ImagesCoreOpenWebUIApiService();
+        this.knowledge = new KnowledgeCoreOpenWebUIApiService();
+        this.memories = new MemoriesCoreOpenWebUIApiService();
+        this.models = new ModelsCoreOpenWebUIApiService();
+        this.notes = new NotesCoreOpenWebUIApiService();
+        this.ollama = new OllamaCoreOpenWebUIApiService();
+        this.openai = new OpenaiCoreOpenWebUIApiService();
+        this.pipelines = new PipelinesCoreOpenWebUIApiService();
+        this.prompts = new PromptsCoreOpenWebUIApiService();
+        this.retrieval = new RetrievalCoreOpenWebUIApiService();
+        this.tasks = new TasksCoreOpenWebUIApiService();
+        this.tools = new ToolsCoreOpenWebUIApiService();
+        this.users = new UsersCoreOpenWebUIApiService();
+        this.utils = new UtilitiesCoreOpenWebUIApiService();
+    }
+}
+
+export const coreOpenWebUIApiService = new CoreOpenWebUIApiService();

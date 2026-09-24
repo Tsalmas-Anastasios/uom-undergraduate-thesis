@@ -1,0 +1,11 @@
+/node_modules/
+/dist/
+
+.env
+
+/server/static/filestorage/posts/images/
+
+/exports/
+
+
+/cloned-repositories/

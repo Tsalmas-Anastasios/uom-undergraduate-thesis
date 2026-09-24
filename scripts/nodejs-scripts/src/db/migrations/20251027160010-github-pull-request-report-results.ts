@@ -1,0 +1,63 @@
+import { DataTypes, QueryInterface } from 'sequelize';
+
+export async function up(queryInterface: QueryInterface): Promise<void> {
+    await queryInterface.createTable('github_pull_request_report_results', {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        recId: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            unique: true,
+            defaultValue: queryInterface.sequelize.literal('gen_random_uuid()'),
+        },
+        jobId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'github_pull_request_report_jobs',
+                key: 'id',
+            },
+            onUpdate: 'CASCADE',
+            onDelete: 'RESTRICT',
+        },
+        repositoryName: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        username: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        repositoryUrl: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        pullRequests: {
+            type: DataTypes.JSONB,
+            allowNull: false,
+        },
+        deleted: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: queryInterface.sequelize.literal('CURRENT_TIMESTAMP'),
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: queryInterface.sequelize.literal('CURRENT_TIMESTAMP'),
+        },
+    });
+}
+
+export async function down(queryInterface: QueryInterface): Promise<void> {
+    await queryInterface.dropTable('github_pull_request_report_results');
+}
