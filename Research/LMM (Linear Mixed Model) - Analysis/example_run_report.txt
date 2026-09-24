@@ -1,0 +1,262 @@
+================================================================================
+1. ΦΟΡΤΩΣΗ ΔΕΔΟΜΕΝΩΝ
+================================================================================
+Συνολικές γραμμές: 20880
+Συνολικά projects (repositoryName): 353
+PRs με καθαρό ζευγάρι base/closed: 9813 (αφαιρέθηκαν 298 PRs με μη τυπικό αριθμό εγγραφών)
+Στιγμιότυπα (1/PR, pr_closed): 9813
+Μετά το φίλτρο ncloc>0: 3702 γραμμές, 242 projects
+
+Κατανομή category_bucket:
+category_bucket
+quality     2885
+both         536
+security     280
+
+Τελικό δείγμα ανάλυσης: 3701 PRs σε 242 projects
+Διάμεσος αριθμός PRs/project: 8  (εύρος 1-85)
+
+================================================================================
+4. ΠΕΡΙΓΡΑΦΙΚΗ ΣΤΑΤΙΣΤΙΚΗ
+================================================================================
+
+Διάμεσες τιμές ανά κατηγορία:
+                 quality_density  security_density   ncloc  complexity
+category_bucket                                                       
+both                    8.047087               0.0  2649.0        32.0
+quality                 9.451796               0.0  1955.0        52.0
+security                4.688523               0.0  3958.0        29.5
+
+Ποσοστό διακύμανσης (log quality density) που εξηγείται από το project (between-group SS / total SS): 86.6%
+-> Αν είναι μεγάλο (π.χ. >10-15%), δικαιολογεί τη χρήση mixed-effects μοντέλου με τυχαίο effect ανά project.
+
+================================================================================
+5. ΜΟΝΤΕΛΟ Α — OLS baseline, cluster-robust SE ανά project
+================================================================================
+
+--- Εξαρτημένη: log(1+Quality issues/KLOC) ---
+                             OLS Regression Results                            
+===============================================================================
+Dep. Variable:     log_quality_density   R-squared:                       0.339
+Model:                             OLS   Adj. R-squared:                  0.338
+Method:                  Least Squares   F-statistic:                     23.32
+Date:                 Mon, 13 Jul 2026   Prob (F-statistic):           2.62e-16
+Time:                         16:34:31   Log-Likelihood:                -6376.0
+No. Observations:                 3701   AIC:                         1.276e+04
+Df Residuals:                     3696   BIC:                         1.279e+04
+Df Model:                            4                                         
+Covariance Type:               cluster                                         
+========================================================================================================================
+                                                           coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------------------------
+Intercept                                                2.0488      0.481      4.258      0.000       1.106       2.992
+C(category_bucket, Treatment('quality'))[T.both]        -0.0037      0.091     -0.040      0.968      -0.183       0.176
+C(category_bucket, Treatment('quality'))[T.security]     0.0079      0.094      0.084      0.933      -0.177       0.193
+log_ncloc                                               -0.1691      0.073     -2.302      0.021      -0.313      -0.025
+log_complexity                                           0.3683      0.046      8.022      0.000       0.278       0.458
+==============================================================================
+Omnibus:                       61.059   Durbin-Watson:                   0.329
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               63.878
+Skew:                           0.322   Prob(JB):                     1.35e-14
+Kurtosis:                       2.973   Cond. No.                         36.1
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)
+
+--- Εξαρτημένη: log(1+Security issues/KLOC) ---
+                             OLS Regression Results                             
+================================================================================
+Dep. Variable:     log_security_density   R-squared:                       0.006
+Model:                              OLS   Adj. R-squared:                  0.005
+Method:                   Least Squares   F-statistic:                     2.887
+Date:                  Mon, 13 Jul 2026   Prob (F-statistic):             0.0231
+Time:                          16:34:31   Log-Likelihood:                -1732.8
+No. Observations:                  3701   AIC:                             3476.
+Df Residuals:                      3696   BIC:                             3507.
+Df Model:                             4                                         
+Covariance Type:                cluster                                         
+========================================================================================================================
+                                                           coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------------------------
+Intercept                                                0.1445      0.101      1.432      0.152      -0.053       0.342
+C(category_bucket, Treatment('quality'))[T.both]         0.0488      0.028      1.739      0.082      -0.006       0.104
+C(category_bucket, Treatment('quality'))[T.security]    -0.0149      0.021     -0.716      0.474      -0.056       0.026
+log_ncloc                                               -0.0032      0.011     -0.296      0.768      -0.025       0.018
+log_complexity                                          -0.0058      0.011     -0.531      0.595      -0.027       0.016
+==============================================================================
+Omnibus:                     3864.421   Durbin-Watson:                   0.271
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           190040.544
+Skew:                           5.356   Prob(JB):                         0.00
+Kurtosis:                      36.431   Cond. No.                         36.1
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)
+
+================================================================================
+6. ΜΟΝΤΕΛΟ Β — Linear Mixed Model, τυχαίο intercept ανά project
+================================================================================
+
+--- Εξαρτημένη: log(1+Quality issues/KLOC), random intercept = project ---
+                             Mixed Linear Model Regression Results
+===============================================================================================
+Model:                      MixedLM           Dependent Variable:           log_quality_density
+No. Observations:           3701              Method:                       REML               
+No. Groups:                 242               Scale:                        0.3616             
+Min. group size:            1                 Log-Likelihood:               -3815.5229         
+Max. group size:            85                Converged:                    Yes                
+Mean group size:            15.3                                                               
+-----------------------------------------------------------------------------------------------
+                                                     Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                                             2.008    0.161 12.472 0.000  1.692  2.323
+C(category_bucket, Treatment('quality'))[T.both]     -0.027    0.030 -0.901 0.368 -0.086  0.032
+C(category_bucket, Treatment('quality'))[T.security] -0.038    0.041 -0.923 0.356 -0.118  0.042
+log_ncloc                                            -0.152    0.026 -5.863 0.000 -0.203 -0.101
+log_complexity                                        0.398    0.022 17.917 0.000  0.355  0.442
+Group Var                                             1.825    0.309                           
+===============================================================================================
+
+
+--- Εξαρτημένη: log(1+Security issues/KLOC), random intercept = project ---
+                             Mixed Linear Model Regression Results
+===============================================================================================
+Model:                       MixedLM          Dependent Variable:          log_security_density
+No. Observations:            3701             Method:                      REML                
+No. Groups:                  242              Scale:                       0.0130              
+Min. group size:             1                Log-Likelihood:              2226.9854           
+Max. group size:             85               Converged:                   Yes                 
+Mean group size:             15.3                                                              
+-----------------------------------------------------------------------------------------------
+                                                     Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                                             0.168    0.037  4.525 0.000  0.095  0.241
+C(category_bucket, Treatment('quality'))[T.both]      0.000    0.006  0.011 0.991 -0.011  0.011
+C(category_bucket, Treatment('quality'))[T.security] -0.008    0.008 -0.993 0.320 -0.023  0.007
+log_ncloc                                            -0.004    0.005 -0.747 0.455 -0.014  0.006
+log_complexity                                       -0.011    0.005 -2.392 0.017 -0.020 -0.002
+Group Var                                             0.156    0.131                           
+===============================================================================================
+
+
+--- (προαιρετικό) LMM με τυχαίο slope για log_ncloc ανά project ---
+                             Mixed Linear Model Regression Results
+===============================================================================================
+Model:                      MixedLM           Dependent Variable:           log_quality_density
+No. Observations:           3701              Method:                       REML               
+No. Groups:                 242               Scale:                        0.3343             
+Min. group size:            1                 Log-Likelihood:               -3688.1165         
+Max. group size:            85                Converged:                    No                 
+Mean group size:            15.3                                                               
+-----------------------------------------------------------------------------------------------
+                                                     Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                                             2.358    0.172 13.740 0.000  2.021  2.694
+C(category_bucket, Treatment('quality'))[T.both]     -0.033    0.029 -1.131 0.258 -0.090  0.024
+C(category_bucket, Treatment('quality'))[T.security] -0.039    0.039 -1.004 0.316 -0.117  0.038
+log_ncloc                                            -0.208    0.032 -6.480 0.000 -0.271 -0.145
+log_complexity                                        0.432    0.025 17.318 0.000  0.383  0.481
+Group Var                                             1.433    0.261                           
+Group x log_ncloc Cov                                -0.168    0.046                           
+log_ncloc Var                                         0.049    0.011                           
+===============================================================================================
+
+
+================================================================================
+7. ΜΟΝΤΕΛΟ Γ — Negative Binomial GLM, offset = log(ncloc), cluster-robust SE
+================================================================================
+
+--- Εξαρτημένη: softwareQualityMaintainabilityIssues (count), offset=log(ncloc) ---
+                          Generalized Linear Model Regression Results                           
+================================================================================================
+Dep. Variable:     softwareQualityMaintainabilityIssues   No. Observations:                 3701
+Model:                                              GLM   Df Residuals:                     3697
+Model Family:                          NegativeBinomial   Df Model:                            3
+Link Function:                                      Log   Scale:                          1.0000
+Method:                                            IRLS   Log-Likelihood:                -18318.
+Date:                                  Mon, 13 Jul 2026   Deviance:                       7828.5
+Time:                                          16:34:34   Pearson chi2:                 1.58e+04
+No. Iterations:                                      19   Pseudo R-squ. (CS):             0.2621
+Covariance Type:                                cluster                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -4.6388      0.331    -14.005      0.000      -5.288      -3.990
+cat_security      -0.5381      0.182     -2.955      0.003      -0.895      -0.181
+cat_both          -0.2215      0.141     -1.573      0.116      -0.497       0.054
+log_complexity     0.2142      0.052      4.098      0.000       0.112       0.317
+==================================================================================
+
+--- Εξαρτημένη: softwareQualitySecurityIssues (count), offset=log(ncloc) ---
+                       Generalized Linear Model Regression Results                       
+=========================================================================================
+Dep. Variable:     softwareQualitySecurityIssues   No. Observations:                 3701
+Model:                                       GLM   Df Residuals:                     3697
+Model Family:                   NegativeBinomial   Df Model:                            3
+Link Function:                               Log   Scale:                          1.0000
+Method:                                     IRLS   Log-Likelihood:                -4534.4
+Date:                           Mon, 13 Jul 2026   Deviance:                       5349.5
+Time:                                   16:34:34   Pearson chi2:                 2.44e+04
+No. Iterations:                               12   Pseudo R-squ. (CS):            0.02392
+Covariance Type:                         cluster                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -8.6687      0.498    -17.424      0.000      -9.644      -7.694
+cat_security       0.0096      0.258      0.037      0.970      -0.497       0.516
+cat_both           0.5675      0.183      3.101      0.002       0.209       0.926
+log_complexity    -0.0577      0.075     -0.770      0.441      -0.204       0.089
+==================================================================================
+
+================================================================================
+8. ΜΟΝΤΕΛΟ Δ — GEE binomial για security_share (proportion), clusters=project
+================================================================================
+PRs με total_issues>0 (χρησιμοποιούνται σε αυτό το μοντέλο): 2877
+
+--- Εξαρτημένη: αναλογία security/(security+maintainability) issues ---
+                               GEE Regression Results                              
+===================================================================================
+Dep. Variable:                ['y1', 'y2']   No. Observations:                 2877
+Model:                                 GEE   No. clusters:                      186
+Method:                        Generalized   Min. cluster size:                   1
+                      Estimating Equations   Max. cluster size:                  79
+Family:                           Binomial   Mean cluster size:                15.5
+Dependence structure:         Exchangeable   Num. iterations:                    16
+Date:                     Mon, 13 Jul 2026   Scale:                           1.000
+Covariance type:                    robust   Time:                         16:34:34
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+const             -2.2246      0.736     -3.021      0.003      -3.668      -0.782
+log_ncloc         -0.0922      0.146     -0.633      0.527      -0.378       0.193
+log_complexity    -0.2798      0.187     -1.496      0.135      -0.646       0.087
+==============================================================================
+Skew:                         -9.2707   Kurtosis:                      95.0913
+Centered skew:                21.3365   Centered kurtosis:            688.7227
+==============================================================================
+
+================================================================================
+9. SENSITIVITY CHECK — μόνο projects με >=5 PRs (πιο αξιόπιστο random effect)
+================================================================================
+Projects με >=5 PRs: 149, γραμμές: 3544
+
+--- LMM (quality density), υποσύνολο projects>=5 PRs ---
+                             Mixed Linear Model Regression Results
+===============================================================================================
+Model:                      MixedLM           Dependent Variable:           log_quality_density
+No. Observations:           3544              Method:                       REML               
+No. Groups:                 149               Scale:                        0.3486             
+Min. group size:            5                 Log-Likelihood:               -3498.4673         
+Max. group size:            85                Converged:                    Yes                
+Mean group size:            23.8                                                               
+-----------------------------------------------------------------------------------------------
+                                                     Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                                             1.888    0.177 10.687 0.000  1.542  2.234
+C(category_bucket, Treatment('quality'))[T.both]     -0.022    0.030 -0.731 0.465 -0.081  0.037
+C(category_bucket, Treatment('quality'))[T.security] -0.021    0.041 -0.520 0.603 -0.100  0.058
+log_ncloc                                            -0.141    0.027 -5.219 0.000 -0.194 -0.088
+log_complexity                                        0.369    0.023 16.035 0.000  0.324  0.414
+Group Var                                             1.553    0.319                           
+===============================================================================================
