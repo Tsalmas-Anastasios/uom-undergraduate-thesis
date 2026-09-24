@@ -1,0 +1,8 @@
+,PC1,PC2
+softwareQualityReliabilityIssues_size_adjusted,0.27341162524513846,0.5865658391908801
+softwareQualityMaintainabilityIssues_size_adjusted,0.46942020901149795,0.1982681754956363
+softwareQualitySecurityIssues_size_adjusted,0.23504566390465992,0.24946401233898524
+securityHotspots_size_adjusted,0.33796204613650604,0.3974158382780769
+complexity_size_adjusted,0.4720709580608946,-0.386141726344801
+cognitiveComplexity_size_adjusted,0.4376043161087982,-0.4665687095600936
+duplicatedLinesDensity_size_adjusted,0.3479618008944051,-0.17224056243604213

@@ -1,0 +1,3 @@
+analysis,parallel_components,kaiser_components,main_retained_components,cumulative_variance_retained,reconstruction_mse
+primary_per_kloc,3,3,3,0.7746208354782093,0.22537916452179063
+sensitivity_size_adjusted,2,2,2,0.657012311990764,0.34298768800923585

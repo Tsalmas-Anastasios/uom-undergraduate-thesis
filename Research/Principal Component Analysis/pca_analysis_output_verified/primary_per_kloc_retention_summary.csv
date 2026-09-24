@@ -1,0 +1,2 @@
+analysis,n_variables,parallel_components,kaiser_components,main_retention_rule,main_retained_components,cumulative_variance_main_retained,components_for_70pct,components_for_80pct,components_for_90pct,components_for_95pct
+primary_per_kloc,7,3,3,parallel,3,0.7746208354782093,3,4,5,5

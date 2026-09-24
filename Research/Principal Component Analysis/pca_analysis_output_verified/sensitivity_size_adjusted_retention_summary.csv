@@ -1,0 +1,2 @@
+analysis,n_variables,parallel_components,kaiser_components,main_retention_rule,main_retained_components,cumulative_variance_main_retained,components_for_70pct,components_for_80pct,components_for_90pct,components_for_95pct
+sensitivity_size_adjusted,7,2,2,parallel,2,0.657012311990764,3,4,5,5
