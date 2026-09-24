@@ -1,0 +1,21 @@
+                               GEE Regression Results                              
+===================================================================================
+Dep. Variable:                           y   No. Observations:                20284
+Model:                                 GEE   No. clusters:                    10142
+Method:                        Generalized   Min. cluster size:                   2
+                      Estimating Equations   Max. cluster size:                   2
+Family:                           Gaussian   Mean cluster size:                 2.0
+Dependence structure:         Exchangeable   Num. iterations:                    11
+Date:                     Sat, 04 Jul 2026   Scale:                           2.969
+Covariance type:                    robust   Time:                         10:59:15
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                 0.1648      0.146      1.131      0.258      -0.121       0.450
+phase_closed              0.0051      0.002      3.003      0.003       0.002       0.008
+log_ncloc                 0.4479      0.029     15.298      0.000       0.391       0.505
+pullRequestMerged_num    -0.1477      0.137     -1.078      0.281      -0.416       0.121
+==============================================================================
+Skew:                          0.0616   Kurtosis:                       1.5471
+Centered skew:                -0.0000   Centered kurtosis:            264.5669
+==============================================================================

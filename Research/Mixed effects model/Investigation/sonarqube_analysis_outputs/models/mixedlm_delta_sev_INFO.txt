@@ -1,0 +1,17 @@
+             Mixed Linear Model Regression Results
+================================================================
+Model:                MixedLM   Dependent Variable:   delta_y   
+No. Observations:     10106     Method:               ML        
+No. Groups:           321       Scale:                0.0024    
+Min. group size:      2         Log-Likelihood:       15507.8434
+Max. group size:      94        Converged:            Yes       
+Mean group size:      31.5                                      
+----------------------------------------------------------------
+                      Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+----------------------------------------------------------------
+Intercept              0.009    0.007  1.253 0.210 -0.005  0.022
+base_log1p            -0.003    0.003 -1.222 0.222 -0.008  0.002
+log_ncloc_base         0.001    0.000  2.968 0.003  0.000  0.002
+pullRequestMerged_num -0.007    0.006 -1.281 0.200 -0.018  0.004
+Group Var              0.005    0.009                           
+================================================================

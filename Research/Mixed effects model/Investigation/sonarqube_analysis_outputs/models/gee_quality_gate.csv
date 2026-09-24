@@ -1,0 +1,2 @@
+model_type,model_name,formula,n_rows,n_prs,phase_closed_log_odds_coef,phase_closed_odds_ratio,phase_closed_p,interpretation
+"GEE Logistic, clustered by PR",quality_gate_ok_phase_effect,"quality_gate_ok ~ phase_closed + log_ncloc + pullRequestMerged_num, clusters=pr_uid",20285,10143,-5.21029675967061,0.005460053123627171,3.1263891833391387e-20,Odds ratio 0.005: values > 1 mean higher odds of OK quality gate at PR closed phase; values < 1 mean lower odds.
