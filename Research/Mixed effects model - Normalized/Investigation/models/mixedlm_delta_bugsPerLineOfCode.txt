@@ -1,0 +1,20 @@
+              Mixed Linear Model Regression Results
+=================================================================
+Model:               MixedLM    Dependent Variable:    delta_y   
+No. Observations:    3899       Method:                ML        
+No. Groups:          243        Scale:                 0.0000    
+Min. group size:     1          Log-Likelihood:        20741.2649
+Max. group size:     85         Converged:             Yes       
+Mean group size:     16.0                                        
+-----------------------------------------------------------------
+                      Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+-----------------------------------------------------------------
+Intercept              0.000    0.000   0.739 0.460 -0.000  0.001
+base_y                -0.133    0.006 -23.788 0.000 -0.144 -0.122
+pullRequestMerged_num -0.000    0.000  -0.594 0.552 -0.001  0.000
+Group Var              0.000    0.001                            
+=================================================================
+
+
+Warnings:
+The MLE may be on the boundary of the parameter space. | datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).

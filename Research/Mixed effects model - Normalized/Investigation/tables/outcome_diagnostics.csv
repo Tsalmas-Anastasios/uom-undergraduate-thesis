@@ -1,0 +1,11 @@
+metric,non_missing_rows,missing_pct,unique_values,min,max,excluded_reason
+bugsPerLineOfCode,8231,60.57950191570881,850,0.0,0.1233816158,
+vulnerabilitiesPerLineOfCode,8231,60.57950191570881,412,0.0,0.0281690141,
+codeSmellsPerLineOfCode,8231,60.57950191570881,2087,0.0,0.9555555556,
+securityHotspotsPerLineOfCode,8231,60.57950191570881,1047,0.0,0.4310344828,
+duplicatedLinesDensityPerLineOfCode,8231,60.57950191570881,1136,0.0,0.4255555556,
+complexityPerLineOfCode,8231,60.57950191570881,2024,0.0,1.0,
+cognitiveComplexityPerLineOfCode,8231,60.57950191570881,1876,0.0,0.8045454545,
+softwareQualityReliabilityIssuesPerLineOfCode,8231,60.57950191570881,1105,0.0,0.1684210526,
+softwareQualityMaintainabilityIssuesPerLineOfCode,8231,60.57950191570881,2082,0.0,0.9555555556,
+softwareQualitySecurityIssuesPerLineOfCode,8231,60.57950191570881,478,0.0,0.0612244898,

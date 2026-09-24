@@ -1,0 +1,24 @@
+                               GEE Regression Results                              
+===================================================================================
+Dep. Variable:                           y   No. Observations:                 7859
+Model:                                 GEE   No. clusters:                     3960
+Method:                        Generalized   Min. cluster size:                   1
+                      Estimating Equations   Max. cluster size:                   2
+Family:                           Gaussian   Mean cluster size:                 2.0
+Dependence structure:         Exchangeable   Num. iterations:                     6
+Date:                     Sun, 05 Jul 2026   Scale:                           0.000
+Covariance type:                    robust   Time:                         08:40:48
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                 0.0026      0.002      1.652      0.098      -0.000       0.006
+phase_closed          -4.953e-05   2.43e-05     -2.037      0.042   -9.72e-05   -1.88e-06
+log_ncloc               8.37e-05   8.16e-05      1.026      0.305   -7.62e-05       0.000
+pullRequestMerged_num    -0.0018      0.001     -1.320      0.187      -0.005       0.001
+==============================================================================
+Skew:                          9.7312   Kurtosis:                     137.5427
+Centered skew:                 0.0000   Centered kurtosis:           2280.8784
+==============================================================================
+
+Warnings:
+datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).

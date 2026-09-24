@@ -1,0 +1,21 @@
+                               GEE Regression Results                              
+===================================================================================
+Dep. Variable:             quality_gate_ok   No. Observations:                20285
+Model:                                 GEE   No. clusters:                    10143
+Method:                        Generalized   Min. cluster size:                   1
+                      Estimating Equations   Max. cluster size:                   2
+Family:                           Binomial   Mean cluster size:                 2.0
+Dependence structure:         Exchangeable   Num. iterations:                     5
+Date:                     Sun, 05 Jul 2026   Scale:                           1.000
+Covariance type:                    robust   Time:                         08:41:10
+=========================================================================================
+                            coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                 8.5272      0.636     13.415      0.000       7.281       9.773
+phase_closed             -5.2113      0.565     -9.216      0.000      -6.320      -4.103
+log_ncloc                -0.2966      0.009    -33.421      0.000      -0.314      -0.279
+pullRequestMerged_num     1.3149      0.328      4.010      0.000       0.672       1.957
+==============================================================================
+Skew:                         -5.1999   Kurtosis:                      30.4384
+Centered skew:                 0.0000   Centered kurtosis:             13.9032
+==============================================================================

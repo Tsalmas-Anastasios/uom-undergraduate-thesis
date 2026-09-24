@@ -1,0 +1,2 @@
+model,n_rows,n_pr_groups,formula,coef_phase_closed_log_odds,odds_ratio_phase_closed,p_phase_closed,ci_low_phase_closed,ci_high_phase_closed,status
+gee_quality_gate_logistic_pr_cluster,20285,10143,quality_gate_ok ~ phase_closed + log_ncloc + pullRequestMerged_num,-5.211318374784733,0.005454477899183837,3.074219186986006e-20,-6.319567342159967,-4.1030694074094995,ok
